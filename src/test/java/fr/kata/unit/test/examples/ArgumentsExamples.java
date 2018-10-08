@@ -28,7 +28,7 @@ public class ArgumentsExamples {
         }
     }
 
-    // TODO : écrire un test qui vérifie que l'étudiant étudie le cours qui lui a été affecté
+    // TODO : écrire un test qui vérifie que l'étudiant étudie bien le cours qui lui a été affecté, c.a.d Maths
 
     @Test
     public void lesson_studied() {
