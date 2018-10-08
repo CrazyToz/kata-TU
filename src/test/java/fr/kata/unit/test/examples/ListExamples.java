@@ -1,14 +1,7 @@
 package fr.kata.unit.test.examples;
 
-import org.assertj.core.api.Assertions;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ListExamples {
 
@@ -34,43 +27,5 @@ public class ListExamples {
     }
 
     // TODO : écrire une fonction qui ne retourne que les films plus vieux que X (année passée en paramètre)
-
-    private static List<Movie> olderThan(List<Movie> movies, int year) {
-        return movies.stream().filter(m -> m.year > year).collect(Collectors.toList());
-    }
-
-    @Test
-    public void movies_older_than_with_assertJ() {
-        // GIVEN
-        List<Movie> movies = givenDummyMovies();
-
-        // WHEN
-        List<Movie> result = olderThan(movies, 2008);
-
-        // THEN
-        // @formatter:off
-        Assertions.assertThat(result)
-                .extracting("name")
-                .containsExactlyInAnyOrder("Avengers", "OSS 117 : Rio ne répond plus")
-                .doesNotContain("Lord of the Rings", "Léon", "300");
-        // @formatter:on
-    }
-
-    @Test
-    public void movies_older_than_with_harmcrest() {
-        // GIVEN
-        List<Movie> movies = givenDummyMovies();
-
-        // WHEN
-        List<Movie> result = olderThan(movies, 2008);
-
-        // THEN
-        // @formatter:off
-        Assert.assertThat(result, Matchers.containsInAnyOrder(
-                Matchers.hasProperty("name", CoreMatchers.is("Avengers")),
-                Matchers.hasProperty("name", CoreMatchers.is("OSS 117 : Rio ne répond plus"))
-        ));
-        // @formatter:on
-    }
 
 }
